@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Formula1Web.Services\Formula1Web.Services.csproj" />
+  </ItemGroup>
+
 </Project>

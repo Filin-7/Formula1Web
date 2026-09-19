@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Formula1Web.Services/Formula1Web.Services.csproj" Id="b53a3557-fdb4-4b90-ab78-4389c9c90d70" />
   <Project Path="Formula1Web/Formula1Web.csproj" />
 </Solution>

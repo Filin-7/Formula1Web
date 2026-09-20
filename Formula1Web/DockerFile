@@ -1,22 +1,24 @@
-# Етап 1: Збірка проєкту
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+
 WORKDIR /src
 
-# Копіюємо файл проєкту та відновлюємо залежності
 COPY ["Formula1Web.csproj", "./"]
+
 RUN dotnet restore "Formula1Web.csproj"
 
-# Копіюємо решту файлів та публікуємо
 COPY . .
-RUN dotnet publish "Formula1Web.csproj" -c Release -o /app/publish
 
-# Етап 2: Запуск застосунку
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+RUN dotnet publish "Formula1Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+
 WORKDIR /app
-COPY --from=build /app/publish .
 
-# Вказуємо порт для Render
-ENV ASPNETCORE_URLS=http://+:8080
-EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:10000
+
+EXPOSE 10000
+
+COPY --from=build /app/publish .
 
 ENTRYPOINT ["dotnet", "Formula1Web.dll"]

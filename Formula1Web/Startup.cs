@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Formula1Web.Services;
 
 namespace Formula1Web
 {
@@ -17,10 +18,24 @@ namespace Formula1Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Отримуємо налаштування Email з appsettings.json
+            var emailSettings = Configuration
+                .GetSection("EmailSettings")
+                .Get<EmailSettings>();
+
+            // Реєструємо налаштування Email
+            services.AddSingleton(emailSettings!);
+
+            // Реєструємо сервіс надсилання Email
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            // Реєструємо MVC
             services.AddControllersWithViews();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

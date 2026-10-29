@@ -2,6 +2,7 @@
     ViewData["Title"] = "Formula 1";
 }
 
+<!-- Головний банер -->
 <header class="masthead">
     <div class="container">
 
@@ -22,12 +23,11 @@
 </header>
 
 
+<!-- Розділ Formula 1 -->
 <section class="page-section" id="services">
-
     <div class="container">
 
         <div class="text-center">
-
             <h2 class="section-heading text-uppercase">
                 Formula 1
             </h2>
@@ -35,12 +35,11 @@
             <h3 class="section-subheading text-muted">
                 Welcome to the world of Formula 1
             </h3>
-
         </div>
-
 
         <div class="row text-center">
 
+            <!-- Racing -->
             <div class="col-md-4">
 
                 <span class="fa-stack fa-4x">
@@ -48,9 +47,7 @@
                     <i class="fas fa-flag-checkered fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">
-                    Racing
-                </h4>
+                <h4 class="my-3">Racing</h4>
 
                 <p class="text-muted">
                     The most exciting races in the world.
@@ -58,7 +55,7 @@
 
             </div>
 
-
+            <!-- Teams -->
             <div class="col-md-4">
 
                 <span class="fa-stack fa-4x">
@@ -66,9 +63,7 @@
                     <i class="fas fa-car fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">
-                    Teams
-                </h4>
+                <h4 class="my-3">Teams</h4>
 
                 <p class="text-muted">
                     Information about Formula 1 teams.
@@ -76,7 +71,7 @@
 
             </div>
 
-
+            <!-- Champions -->
             <div class="col-md-4">
 
                 <span class="fa-stack fa-4x">
@@ -84,9 +79,7 @@
                     <i class="fas fa-trophy fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">
-                    Champions
-                </h4>
+                <h4 class="my-3">Champions</h4>
 
                 <p class="text-muted">
                     The greatest Formula 1 champions.
@@ -95,14 +88,78 @@
             </div>
 
         </div>
-
     </div>
-
 </section>
 
 
-<section class="page-section" id="contact">
+<!-- Розділ File Manager -->
+<section class="page-section bg-light" id="files">
+    <div class="container">
 
+        <div class="text-center">
+
+            <h2 class="section-heading text-uppercase">
+                File Manager
+            </h2>
+
+            <h3 class="section-subheading text-muted">
+                Upload and view your files
+            </h3>
+
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col-md-6 mb-4">
+
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-cloud-upload-alt fa-stack-1x fa-inverse"></i>
+                </span>
+
+                <h4 class="my-3">Upload Files</h4>
+
+                <p class="text-muted">
+                    Upload images, PDF and text files to the server.
+                </p>
+
+                <a asp-controller="Files"
+                   asp-action="Upload"
+                   class="btn btn-primary btn-xl text-uppercase">
+                    Upload Files
+                </a>
+
+            </div>
+
+            <div class="col-md-6 mb-4">
+
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-folder-open fa-stack-1x fa-inverse"></i>
+                </span>
+
+                <h4 class="my-3">View Files</h4>
+
+                <p class="text-muted">
+                    View all uploaded files and open them.
+                </p>
+
+                <a asp-controller="Files"
+                   asp-action="Index"
+                   class="btn btn-success btn-xl text-uppercase">
+                    View Files
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Розділ Contact us -->
+<section class="page-section" id="contact">
     <div class="container">
 
         @if (ViewBag.Message != null)
@@ -111,7 +168,6 @@
                 @ViewBag.Message
             </div>
         }
-
 
         <div class="text-center">
 
@@ -125,10 +181,11 @@
 
         </div>
 
-
         <form asp-controller="Home"
               asp-action="SendEmail"
               method="post">
+
+            @Html.AntiForgeryToken()
 
             <div class="row">
 
@@ -147,7 +204,6 @@
 
                 </div>
 
-
                 <div class="col-md-6 mb-3">
 
                     <label for="Message" class="form-label">
@@ -165,7 +221,6 @@
 
             </div>
 
-
             <div class="text-center">
 
                 <button type="submit"
@@ -178,5 +233,4 @@
         </form>
 
     </div>
-
 </section>

@@ -364,3 +364,9 @@ FodyWeavers.xsd
 
 # Ignore logs
 **/Logs/
+
+# Ignore logs
+**/Logs/
+
+# Ignore uploaded files
+**/wwwroot/Files/

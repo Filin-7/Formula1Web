@@ -1,0 +1,61 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "Uploaded Files";
+}
+
+<section class="page-section">
+    <div class="container">
+
+        <h2 class="text-center mb-4">
+            Uploaded Files
+        </h2>
+
+        <div class="mb-4">
+            <a asp-controller="Files"
+               asp-action="Upload"
+               class="btn btn-primary">
+                Upload New File
+            </a>
+        </div>
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <div class="alert alert-info">
+                No files uploaded yet.
+            </div>
+        }
+        else
+        {
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var file in Model)
+                    {
+                        <tr>
+                            <td>@file</td>
+
+                            <td>
+                                <a asp-controller="Files"
+                                   asp-action="ViewFile"
+                                   asp-route-fileName="@file"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn btn-success btn-sm">
+                                    View File
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</section>

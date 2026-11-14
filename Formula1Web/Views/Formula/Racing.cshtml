@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Racing";
+}
+
+<section class="page-section bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-heading text-uppercase">
+                Formula 1 Racing
+            </h2>
+            <h3 class="section-subheading text-muted">
+                Discover the world of Formula 1 racing
+            </h3>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Grand Prix</h4>
+                        <p class="card-text">
+                            A Grand Prix is a Formula 1 race
+                            held at a circuit or street track.
+                            Drivers compete for championship points.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Qualifying</h4>
+                        <p class="card-text">
+                            Qualifying determines the starting
+                            positions of drivers for the race.
+                            The fastest drivers usually start
+                            near the front of the grid.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Pit Stops</h4>
+                        <p class="card-text">
+                            During a pit stop, the team changes
+                            the tyres of the racing car.
+                            A good pit stop strategy can help
+                            a driver gain positions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-primary btn-xl">
+                Back to Home
+            </a>
+        </div>
+
+    </div>
+</section>

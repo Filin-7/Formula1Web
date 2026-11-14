@@ -1,37 +1,48 @@
 ﻿@model List<string>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Formula1Web.SharedResource> L
 
 @{
-    ViewData["Title"] = "Uploaded Files";
+    ViewData["Title"] = L["UploadedFiles"].Value;
 }
 
 <section class="page-section">
     <div class="container">
 
         <h2 class="text-center mb-4">
-            Uploaded Files
+            @L["UploadedFiles"]
         </h2>
 
         <div class="mb-4">
+
             <a asp-controller="Files"
                asp-action="Upload"
                class="btn btn-primary">
-                Upload New File
+                @L["UploadNewFile"]
             </a>
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-secondary">
+                Home
+            </a>
+
         </div>
 
         @if (Model == null || Model.Count == 0)
         {
             <div class="alert alert-info">
-                No files uploaded yet.
+                @L["NoFiles"]
             </div>
         }
         else
         {
             <table class="table table-bordered table-striped">
+
                 <thead>
                     <tr>
-                        <th>File Name</th>
-                        <th>Action</th>
+                        <th>@L["FileName"]</th>
+                        <th>@L["Action"]</th>
                     </tr>
                 </thead>
 
@@ -48,12 +59,13 @@
                                    target="_blank"
                                    rel="noopener"
                                    class="btn btn-success btn-sm">
-                                    View File
+                                    @L["ViewFile"]
                                 </a>
                             </td>
                         </tr>
                     }
                 </tbody>
+
             </table>
         }
 

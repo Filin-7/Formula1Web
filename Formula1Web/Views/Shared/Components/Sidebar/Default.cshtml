@@ -1,25 +1,63 @@
 ﻿@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<Formula1Web.SharedResource> L
 
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
 <div class="list-group">
 
+    <!-- Home -->
     <a asp-controller="Home"
        asp-action="Index"
-       class="list-group-item list-group-item-action">
+       class="list-group-item list-group-item-action @(controller == "Home" && action == "Index" ? "active" : "")">
+
         <i class="fas fa-home me-2"></i>
         @L["Home"]
     </a>
 
+    <!-- Racing -->
+    <a asp-controller="Formula"
+       asp-action="Racing"
+       class="list-group-item list-group-item-action @(controller == "Formula" && action == "Racing" ? "active" : "")">
+
+        <i class="fas fa-flag-checkered me-2"></i>
+        @L["Racing"]
+    </a>
+
+    <!-- Teams -->
+    <a asp-controller="Formula"
+       asp-action="Teams"
+       class="list-group-item list-group-item-action @(controller == "Formula" && action == "Teams" ? "active" : "")">
+
+        <i class="fas fa-car me-2"></i>
+        @L["Teams"]
+    </a>
+
+    <!-- Champions -->
+    <a asp-controller="Formula"
+       asp-action="Champions"
+       class="list-group-item list-group-item-action @(controller == "Formula" && action == "Champions" ? "active" : "")">
+
+        <i class="fas fa-trophy me-2"></i>
+        @L["Champions"]
+    </a>
+
+    <!-- Upload Files -->
     <a asp-controller="Files"
        asp-action="Upload"
-       class="list-group-item list-group-item-action">
+       class="list-group-item list-group-item-action @(controller == "Files" && action == "Upload" ? "active" : "")">
+
         <i class="fas fa-upload me-2"></i>
         @L["UploadFiles"]
     </a>
 
+    <!-- View Files -->
     <a asp-controller="Files"
        asp-action="Index"
-       class="list-group-item list-group-item-action">
+       class="list-group-item list-group-item-action @(controller == "Files" && action == "Index" ? "active" : "")">
+
         <i class="fas fa-folder-open me-2"></i>
         @L["ViewFiles"]
     </a>

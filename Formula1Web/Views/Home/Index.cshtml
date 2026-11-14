@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Formula1Web.SharedResource> L
+
+@{
     ViewData["Title"] = "Formula 1";
 }
 
@@ -7,16 +10,16 @@
     <div class="container">
 
         <div class="masthead-subheading">
-            Welcome to Formula 1!
+            @L["Welcome"]
         </div>
 
         <div class="masthead-heading text-uppercase">
-            The world of racing
+            @L["MainTitle"]
         </div>
 
         <a class="btn btn-primary btn-xl text-uppercase"
            href="#services">
-            Tell me more
+            @L["TellMore"]
         </a>
 
     </div>
@@ -28,13 +31,15 @@
     <div class="container">
 
         <div class="text-center">
+
             <h2 class="section-heading text-uppercase">
-                Formula 1
+                @L["FormulaTitle"]
             </h2>
 
             <h3 class="section-subheading text-muted">
-                Welcome to the world of Formula 1
+                @L["FormulaDescription"]
             </h3>
+
         </div>
 
         <div class="row text-center">
@@ -47,10 +52,10 @@
                     <i class="fas fa-flag-checkered fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">Racing</h4>
+                <h4 class="my-3">@L["Racing"]</h4>
 
                 <p class="text-muted">
-                    The most exciting races in the world.
+                    @L["RacingDescription"]
                 </p>
 
             </div>
@@ -63,10 +68,10 @@
                     <i class="fas fa-car fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">Teams</h4>
+                <h4 class="my-3">@L["Teams"]</h4>
 
                 <p class="text-muted">
-                    Information about Formula 1 teams.
+                    @L["TeamsDescription"]
                 </p>
 
             </div>
@@ -79,10 +84,10 @@
                     <i class="fas fa-trophy fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">Champions</h4>
+                <h4 class="my-3">@L["Champions"]</h4>
 
                 <p class="text-muted">
-                    The greatest Formula 1 champions.
+                    @L["ChampionsDescription"]
                 </p>
 
             </div>
@@ -99,17 +104,18 @@
         <div class="text-center">
 
             <h2 class="section-heading text-uppercase">
-                File Manager
+                @L["FileManager"]
             </h2>
 
             <h3 class="section-subheading text-muted">
-                Upload and view your files
+                @L["FileDescription"]
             </h3>
 
         </div>
 
         <div class="row text-center">
 
+            <!-- Upload Files -->
             <div class="col-md-6 mb-4">
 
                 <span class="fa-stack fa-4x">
@@ -117,20 +123,23 @@
                     <i class="fas fa-cloud-upload-alt fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">Upload Files</h4>
+                <h4 class="my-3">
+                    @L["UploadFiles"]
+                </h4>
 
                 <p class="text-muted">
-                    Upload images, PDF and text files to the server.
+                    @L["FileDescription"]
                 </p>
 
                 <a asp-controller="Files"
                    asp-action="Upload"
                    class="btn btn-primary btn-xl text-uppercase">
-                    Upload Files
+                    @L["UploadFiles"]
                 </a>
 
             </div>
 
+            <!-- View Files -->
             <div class="col-md-6 mb-4">
 
                 <span class="fa-stack fa-4x">
@@ -138,16 +147,18 @@
                     <i class="fas fa-folder-open fa-stack-1x fa-inverse"></i>
                 </span>
 
-                <h4 class="my-3">View Files</h4>
+                <h4 class="my-3">
+                    @L["ViewFiles"]
+                </h4>
 
                 <p class="text-muted">
-                    View all uploaded files and open them.
+                    @L["FileDescription"]
                 </p>
 
                 <a asp-controller="Files"
                    asp-action="Index"
                    class="btn btn-success btn-xl text-uppercase">
-                    View Files
+                    @L["ViewFiles"]
                 </a>
 
             </div>
@@ -172,11 +183,11 @@
         <div class="text-center">
 
             <h2 class="section-heading text-uppercase">
-                Contact us
+                @L["ContactUs"]
             </h2>
 
             <h3 class="section-subheading text-muted">
-                Send us a message
+                @L["ContactDescription"]
             </h3>
 
         </div>
@@ -192,14 +203,14 @@
                 <div class="col-md-6 mb-3">
 
                     <label for="Email" class="form-label">
-                        Email
+                        @L["Email"]
                     </label>
 
                     <input type="email"
                            class="form-control"
                            id="Email"
                            name="Email"
-                           placeholder="Your email"
+                           placeholder="@L["Email"]"
                            required />
 
                 </div>
@@ -207,14 +218,14 @@
                 <div class="col-md-6 mb-3">
 
                     <label for="Message" class="form-label">
-                        Message
+                        @L["Message"]
                     </label>
 
                     <textarea class="form-control"
                               id="Message"
                               name="Message"
                               rows="5"
-                              placeholder="Your message"
+                              placeholder="@L["Message"]"
                               required></textarea>
 
                 </div>
@@ -225,7 +236,7 @@
 
                 <button type="submit"
                         class="btn btn-primary btn-xl text-uppercase">
-                    Submit
+                    @L["Submit"]
                 </button>
 
             </div>

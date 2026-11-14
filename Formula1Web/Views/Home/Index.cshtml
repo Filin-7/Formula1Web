@@ -5,6 +5,41 @@
     ViewData["Title"] = "Formula 1";
 }
 
+<style>
+    /* Картки Formula 1 */
+    .formula-card {
+        border: none;
+        border-radius: 18px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+        .formula-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18) !important;
+        }
+
+        .formula-card h4 {
+            transition: color 0.3s ease;
+        }
+
+        .formula-card:hover h4 {
+            color: #d39e00;
+        }
+
+    .formula-link {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+    }
+
+        .formula-link:hover {
+            color: inherit;
+        }
+</style>
+
+
 <!-- Головний банер -->
 <header class="masthead">
     <div class="container">
@@ -42,57 +77,96 @@
 
         </div>
 
-        <div class="row text-center">
+        <div class="row text-center g-4">
 
             <!-- Racing -->
             <div class="col-md-4">
 
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-flag-checkered fa-stack-1x fa-inverse"></i>
-                </span>
+                <a asp-controller="Formula"
+                   asp-action="Racing"
+                   class="formula-link">
 
-                <h4 class="my-3">@L["Racing"]</h4>
+                    <div class="card formula-card h-100 shadow-sm p-4">
 
-                <p class="text-muted">
-                    @L["RacingDescription"]
-                </p>
+                        <span class="fa-stack fa-4x mx-auto">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-flag-checkered fa-stack-1x fa-inverse"></i>
+                        </span>
+
+                        <h4 class="my-3">
+                            @L["Racing"]
+                        </h4>
+
+                        <p class="text-muted">
+                            @L["RacingDescription"]
+                        </p>
+
+                    </div>
+
+                </a>
 
             </div>
+
 
             <!-- Teams -->
             <div class="col-md-4">
 
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-car fa-stack-1x fa-inverse"></i>
-                </span>
+                <a asp-controller="Formula"
+                   asp-action="Teams"
+                   class="formula-link">
 
-                <h4 class="my-3">@L["Teams"]</h4>
+                    <div class="card formula-card h-100 shadow-sm p-4">
 
-                <p class="text-muted">
-                    @L["TeamsDescription"]
-                </p>
+                        <span class="fa-stack fa-4x mx-auto">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-car fa-stack-1x fa-inverse"></i>
+                        </span>
+
+                        <h4 class="my-3">
+                            @L["Teams"]
+                        </h4>
+
+                        <p class="text-muted">
+                            @L["TeamsDescription"]
+                        </p>
+
+                    </div>
+
+                </a>
 
             </div>
+
 
             <!-- Champions -->
             <div class="col-md-4">
 
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-trophy fa-stack-1x fa-inverse"></i>
-                </span>
+                <a asp-controller="Formula"
+                   asp-action="Champions"
+                   class="formula-link">
 
-                <h4 class="my-3">@L["Champions"]</h4>
+                    <div class="card formula-card h-100 shadow-sm p-4">
 
-                <p class="text-muted">
-                    @L["ChampionsDescription"]
-                </p>
+                        <span class="fa-stack fa-4x mx-auto">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-trophy fa-stack-1x fa-inverse"></i>
+                        </span>
+
+                        <h4 class="my-3">
+                            @L["Champions"]
+                        </h4>
+
+                        <p class="text-muted">
+                            @L["ChampionsDescription"]
+                        </p>
+
+                    </div>
+
+                </a>
 
             </div>
 
         </div>
+
     </div>
 </section>
 
@@ -138,6 +212,7 @@
                 </a>
 
             </div>
+
 
             <!-- View Files -->
             <div class="col-md-6 mb-4">
@@ -214,6 +289,7 @@
                            required />
 
                 </div>
+
 
                 <div class="col-md-6 mb-3">
 

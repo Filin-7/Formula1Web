@@ -12,7 +12,6 @@
 
     <title>@ViewData["Title"] - Formula 1</title>
 
-    <!-- Іконка сайту -->
     <link rel="icon"
           type="image/x-icon"
           href="~/assets/favicon.ico" />
@@ -36,17 +35,88 @@
     <link rel="stylesheet"
           href="~/css/styles.css" />
 
+    <style>
+        /* Кнопка відкриття Sidebar */
+        .sidebar-toggle {
+            position: fixed;
+            top: 90px;
+            left: 15px;
+            z-index: 1040;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Висувне меню */
+        .offcanvas {
+            max-width: 320px;
+        }
+
+        .offcanvas-header {
+            background-color: #212529;
+            color: white;
+        }
+
+        .offcanvas-body {
+            background-color: #f8f9fa;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
+
+    <!-- Navbar ViewComponent -->
+    @await Component.InvokeAsync("Navbar")
 
     <!-- Перемикач мов -->
     <div class="container">
         <partial name="_LanguageSwitcher" />
     </div>
 
-    <!-- Основний вміст сторінки -->
-    @RenderBody()
+    <!-- Кнопка відкриття Sidebar -->
+    <button class="btn btn-warning sidebar-toggle"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu">
+        ☰ Menu
+    </button>
+
+    <!-- Висувне бокове меню -->
+    <div class="offcanvas offcanvas-start"
+         tabindex="-1"
+         id="sidebarMenu"
+         aria-labelledby="sidebarMenuLabel">
+
+        <div class="offcanvas-header">
+
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">
+                Formula 1 Menu
+            </h5>
+
+            <button type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body">
+
+            <!-- Sidebar ViewComponent -->
+            @await Component.InvokeAsync(
+                "Sidebar",
+                new { layout = "Main" })
+
+        </div>
+
+    </div>
+
+    <!-- Основний вміст сторінки на всю ширину -->
+    <main>
+        @RenderBody()
+    </main>
 
     <!-- Bootstrap JavaScript -->
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>

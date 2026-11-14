@@ -69,6 +69,16 @@
                     </a>
                 </li>
 
+                <!-- Driver Registration -->
+                <li class="nav-item">
+                    <a class="nav-link @(controller == "Driver" && action == "Register" ? "active text-warning" : "")"
+                       asp-controller="Driver"
+                       asp-action="Register">
+                        <i class="fas fa-user-plus me-1"></i>
+                        @L["DriverRegistration"]
+                    </a>
+                </li>
+
                 <!-- Upload Files -->
                 <li class="nav-item">
                     <a class="nav-link @(controller == "Files" && action == "Upload" ? "active text-warning" : "")"

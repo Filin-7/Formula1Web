@@ -1,0 +1,32 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Formula1Web.SharedResource> L
+
+<div class="card border-primary">
+    <div class="card-body text-center">
+
+        <h5>Quick Menu</h5>
+
+        <div class="d-grid gap-2">
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-outline-primary">
+                @L["Home"]
+            </a>
+
+            <a asp-controller="Files"
+               asp-action="Upload"
+               class="btn btn-outline-primary">
+                @L["UploadFiles"]
+            </a>
+
+            <a asp-controller="Files"
+               asp-action="Index"
+               class="btn btn-outline-primary">
+                @L["ViewFiles"]
+            </a>
+
+        </div>
+
+    </div>
+</div>

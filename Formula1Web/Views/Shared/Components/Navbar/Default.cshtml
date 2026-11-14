@@ -1,15 +1,22 @@
 ﻿@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<Formula1Web.SharedResource> L
 
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
 
+        <!-- Логотип -->
         <a class="navbar-brand"
            asp-controller="Home"
            asp-action="Index">
             Formula 1
         </a>
 
+        <!-- Кнопка мобільного меню -->
         <button class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
@@ -17,30 +24,63 @@
                 aria-controls="navbarMenu"
                 aria-expanded="false"
                 aria-label="Toggle navigation">
+
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Пункти меню -->
         <div class="collapse navbar-collapse" id="navbarMenu">
+
             <ul class="navbar-nav ms-auto">
 
+                <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link"
+                    <a class="nav-link @(controller == "Home" && action == "Index" ? "active text-warning" : "")"
                        asp-controller="Home"
                        asp-action="Index">
                         @L["Home"]
                     </a>
                 </li>
 
+                <!-- Racing -->
                 <li class="nav-item">
-                    <a class="nav-link"
+                    <a class="nav-link @(controller == "Formula" && action == "Racing" ? "active text-warning" : "")"
+                       asp-controller="Formula"
+                       asp-action="Racing">
+                        @L["Racing"]
+                    </a>
+                </li>
+
+                <!-- Teams -->
+                <li class="nav-item">
+                    <a class="nav-link @(controller == "Formula" && action == "Teams" ? "active text-warning" : "")"
+                       asp-controller="Formula"
+                       asp-action="Teams">
+                        @L["Teams"]
+                    </a>
+                </li>
+
+                <!-- Champions -->
+                <li class="nav-item">
+                    <a class="nav-link @(controller == "Formula" && action == "Champions" ? "active text-warning" : "")"
+                       asp-controller="Formula"
+                       asp-action="Champions">
+                        @L["Champions"]
+                    </a>
+                </li>
+
+                <!-- Upload Files -->
+                <li class="nav-item">
+                    <a class="nav-link @(controller == "Files" && action == "Upload" ? "active text-warning" : "")"
                        asp-controller="Files"
                        asp-action="Upload">
                         @L["UploadFiles"]
                     </a>
                 </li>
 
+                <!-- View Files -->
                 <li class="nav-item">
-                    <a class="nav-link"
+                    <a class="nav-link @(controller == "Files" && action == "Index" ? "active text-warning" : "")"
                        asp-controller="Files"
                        asp-action="Index">
                         @L["ViewFiles"]
@@ -48,6 +88,7 @@
                 </li>
 
             </ul>
+
         </div>
 
     </div>

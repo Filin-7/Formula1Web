@@ -52,6 +52,15 @@
                 @L["Champions"]
             </a>
 
+            <!-- Driver Registration -->
+            <a asp-controller="Driver"
+               asp-action="Register"
+               class="btn @(controller == "Driver" && action == "Register" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-user-plus me-2"></i>
+                @L["DriverRegistration"]
+            </a>
+
             <!-- Upload Files -->
             <a asp-controller="Files"
                asp-action="Upload"

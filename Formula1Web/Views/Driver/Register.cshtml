@@ -1,0 +1,199 @@
+﻿
+@model Formula1Web.Models.DriverRegistration
+
+@{
+    ViewData["Title"] = "Driver Registration";
+}
+
+<section class="page-section bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-heading text-uppercase">
+                Driver Registration
+            </h2>
+
+            <h3 class="section-subheading text-muted">
+                Register a Formula 1 driver
+            </h3>
+        </div>
+
+        @if (ViewBag.Success != null)
+        {
+            <div class="alert alert-success text-center">
+                @ViewBag.Success
+            </div>
+        }
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+
+                        <form asp-controller="Driver"
+                              asp-action="Register"
+                              method="post"
+                              novalidate>
+
+                            @Html.AntiForgeryToken()
+
+                            <div asp-validation-summary="ModelOnly"
+                                 class="text-danger mb-3">
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="FirstName"
+                                           class="form-label">
+                                        First Name
+                                    </label>
+
+                                    <input asp-for="FirstName"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="FirstName"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LastName"
+                                           class="form-label">
+                                        Last Name
+                                    </label>
+
+                                    <input asp-for="LastName"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="LastName"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Email"
+                                           class="form-label">
+                                        Email
+                                    </label>
+
+                                    <input asp-for="Email"
+                                           type="text"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="Email"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Age"
+                                           class="form-label">
+                                        Age
+                                    </label>
+
+                                    <input asp-for="Age"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="Age"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Country"
+                                           class="form-label">
+                                        Country
+                                    </label>
+
+                                    <input asp-for="Country"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="Country"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Team"
+                                           class="form-label">
+                                        Team
+                                    </label>
+
+                                    <input asp-for="Team"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="Team"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="CarNumber"
+                                           class="form-label">
+                                        Car Number
+                                    </label>
+
+                                    <input asp-for="CarNumber"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="CarNumber"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="ExperienceYears"
+                                           class="form-label">
+                                        Experience Years
+                                    </label>
+
+                                    <input asp-for="ExperienceYears"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="ExperienceYears"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PhoneNumber"
+                                           class="form-label">
+                                        Phone Number (Optional)
+                                    </label>
+
+                                    <input asp-for="PhoneNumber"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="PhoneNumber"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label asp-for="Biography"
+                                           class="form-label">
+                                        Biography (Optional)
+                                    </label>
+
+                                    <textarea asp-for="Biography"
+                                              class="form-control"
+                                              rows="4"></textarea>
+
+                                    <span asp-validation-for="Biography"
+                                          class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="text-center mt-3">
+
+                                <button type="submit"
+                                        class="btn btn-primary btn-xl">
+                                    Register Driver
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

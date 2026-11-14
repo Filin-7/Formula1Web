@@ -1,28 +1,72 @@
 ﻿@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<Formula1Web.SharedResource> L
 
-<div class="card border-primary">
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<div class="card border-primary shadow-sm">
     <div class="card-body text-center">
 
-        <h5>Quick Menu</h5>
+        <h5 class="mb-3">
+            <i class="fas fa-bars me-2"></i>
+            Quick Menu
+        </h5>
 
         <div class="d-grid gap-2">
 
+            <!-- Home -->
             <a asp-controller="Home"
                asp-action="Index"
-               class="btn btn-outline-primary">
+               class="btn @(controller == "Home" && action == "Index" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-home me-2"></i>
                 @L["Home"]
             </a>
 
+            <!-- Racing -->
+            <a asp-controller="Formula"
+               asp-action="Racing"
+               class="btn @(controller == "Formula" && action == "Racing" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-flag-checkered me-2"></i>
+                @L["Racing"]
+            </a>
+
+            <!-- Teams -->
+            <a asp-controller="Formula"
+               asp-action="Teams"
+               class="btn @(controller == "Formula" && action == "Teams" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-car me-2"></i>
+                @L["Teams"]
+            </a>
+
+            <!-- Champions -->
+            <a asp-controller="Formula"
+               asp-action="Champions"
+               class="btn @(controller == "Formula" && action == "Champions" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-trophy me-2"></i>
+                @L["Champions"]
+            </a>
+
+            <!-- Upload Files -->
             <a asp-controller="Files"
                asp-action="Upload"
-               class="btn btn-outline-primary">
+               class="btn @(controller == "Files" && action == "Upload" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-upload me-2"></i>
                 @L["UploadFiles"]
             </a>
 
+            <!-- View Files -->
             <a asp-controller="Files"
                asp-action="Index"
-               class="btn btn-outline-primary">
+               class="btn @(controller == "Files" && action == "Index" ? "btn-primary" : "btn-outline-primary")">
+
+                <i class="fas fa-folder-open me-2"></i>
                 @L["ViewFiles"]
             </a>
 

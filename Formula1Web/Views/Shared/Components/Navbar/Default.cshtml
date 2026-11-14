@@ -1,0 +1,54 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Formula1Web.SharedResource> L
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand"
+           asp-controller="Home"
+           asp-action="Index">
+            Formula 1
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       asp-controller="Home"
+                       asp-action="Index">
+                        @L["Home"]
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       asp-controller="Files"
+                       asp-action="Upload">
+                        @L["UploadFiles"]
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       asp-controller="Files"
+                       asp-action="Index">
+                        @L["ViewFiles"]
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>

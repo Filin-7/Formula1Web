@@ -121,7 +121,7 @@
     <value>Дія</value>
   </data>
   <data name="Champions" xml:space="preserve">
-    <value>Champions</value>
+    <value>Чемпіон</value>
   </data>
   <data name="ChampionsDescription" xml:space="preserve">
     <value>Найвидатніші чемпіони Формули-1.</value>
@@ -131,6 +131,9 @@
   </data>
   <data name="ContactUs" xml:space="preserve">
     <value> Зв'язатися з нами</value>
+  </data>
+  <data name="DriverRegistration" xml:space="preserve">
+    <value>Реєстрація пілота</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Електронна пошта</value>

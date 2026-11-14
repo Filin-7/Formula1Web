@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "Formula 1 Teams";
+
+    var teams = new[]
+    {
+        new {
+            Name = "Ferrari",
+            Image = "ferrari.jpg",
+            Country = "Italy",
+            Description = "Ferrari is one of the most famous teams in Formula 1 history, known for its red racing cars."
+        },
+        new {
+            Name = "Mercedes",
+            Image = "mercedes.jpg",
+            Country = "Germany",
+            Description = "Mercedes is a successful Formula 1 team known for advanced technology and championship victories."
+        },
+        new {
+            Name = "Red Bull Racing",
+            Image = "redbull.jpg",
+            Country = "Austria",
+            Description = "Red Bull Racing has won multiple Formula 1 championships with drivers such as Sebastian Vettel and Max Verstappen."
+        },
+        new {
+            Name = "McLaren",
+            Image = "mclaren.jpg",
+            Country = "United Kingdom",
+            Description = "McLaren is a historic Formula 1 team famous for its racing success and iconic orange cars."
+        },
+        new {
+            Name = "Aston Martin",
+            Image = "astonmartin.jpg",
+            Country = "United Kingdom",
+            Description = "Aston Martin is known for its British racing heritage and distinctive green Formula 1 cars."
+        },
+        new {
+            Name = "Williams",
+            Image = "williams.jpg",
+            Country = "United Kingdom",
+            Description = "Williams is a legendary Formula 1 team with a rich history of championship success."
+        }
+    };
+}
+
+<style>
+    .team-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+
+    .team-photo {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        background-color: #e9ecef;
+    }
+
+    .team-country {
+        color: #d39e00;
+        font-weight: bold;
+    }
+</style>
+
+<section class="page-section bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-heading text-uppercase">
+                Formula 1 Teams
+            </h2>
+
+            <h3 class="section-subheading text-muted">
+                Discover famous Formula 1 teams
+            </h3>
+        </div>
+
+        <div class="row g-4">
+
+            @foreach (var team in teams)
+            {
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="card team-card h-100 shadow-sm">
+
+                        <img src="@Url.Content("~/images/teams/" + team.Image)"
+                             class="team-photo"
+                             alt="@team.Name"
+                             loading="lazy" />
+
+                        <div class="card-body text-center p-4">
+
+                            <h4 class="card-title">
+                                @team.Name
+                            </h4>
+
+                            <p class="team-country mb-2">
+                                <i class="fas fa-flag"></i>
+                                @team.Country
+                            </p>
+
+                            <p class="card-text">
+                                @team.Description
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-primary btn-xl">
+                Back to Home
+            </a>
+        </div>
+
+    </div>
+</section>

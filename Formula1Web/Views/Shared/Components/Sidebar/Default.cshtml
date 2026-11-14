@@ -44,6 +44,15 @@
         @L["Champions"]
     </a>
 
+    <!-- Driver Registration -->
+    <a asp-controller="Driver"
+       asp-action="Register"
+       class="list-group-item list-group-item-action @(controller == "Driver" && action == "Register" ? "active" : "")">
+
+        <i class="fas fa-user-plus me-2"></i>
+        @L["DriverRegistration"]
+    </a>
+
     <!-- Upload Files -->
     <a asp-controller="Files"
        asp-action="Upload"

@@ -1,12 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Upload File";
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Formula1Web.SharedResource> L
+
+@{
+    ViewData["Title"] = L["UploadFiles"].Value;
 }
 
 <section class="page-section">
     <div class="container">
 
         <h2 class="text-center mb-4">
-            Upload File
+            @L["UploadFiles"]
         </h2>
 
         <form asp-controller="Files"
@@ -21,7 +24,7 @@
 
             <div class="mb-3">
                 <label class="form-label">
-                    Select a file
+                    @L["SelectFile"]
                 </label>
 
                 <input type="file"
@@ -33,13 +36,19 @@
 
             <button type="submit"
                     class="btn btn-primary">
-                Upload
+                @L["Upload"]
             </button>
 
             <a asp-controller="Files"
                asp-action="Index"
                class="btn btn-secondary">
-                View Files
+                @L["ViewFiles"]
+            </a>
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-outline-secondary">
+                Home
             </a>
 
         </form>

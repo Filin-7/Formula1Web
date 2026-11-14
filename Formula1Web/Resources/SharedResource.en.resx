@@ -132,6 +132,9 @@
   <data name="ContactUs" xml:space="preserve">
     <value>Contact us</value>
   </data>
+  <data name="DriverRegistration" xml:space="preserve">
+    <value>Driver Registration</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>

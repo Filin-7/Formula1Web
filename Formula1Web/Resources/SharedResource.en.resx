@@ -150,6 +150,9 @@
   <data name="FormulaTitle" xml:space="preserve">
     <value>Formula 1</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="MainTitle" xml:space="preserve">
     <value>The world of racing</value>
   </data>

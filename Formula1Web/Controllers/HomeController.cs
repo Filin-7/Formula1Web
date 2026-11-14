@@ -1,6 +1,9 @@
+
 using Formula1Web.Models;
 using Formula1Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Localization;
+using System;
 using System.Diagnostics;
 
 namespace Formula1Web.Controllers
@@ -19,8 +22,11 @@ namespace Formula1Web.Controllers
             return View();
         }
 
+        // Надсилання Email
         [HttpPost]
-        public async Task<IActionResult> SendEmail(EmailMessageViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendEmail(
+            EmailMessageViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -35,6 +41,42 @@ namespace Formula1Web.Controllers
             ViewBag.Message = "Email sent successfully!";
 
             return View("Index");
+        }
+
+        // Зміна мови сайту
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SetLanguage(
+            string culture,
+            string returnUrl = "/")
+        {
+            // Дозволяємо тільки українську та англійську
+            if (culture != "uk" && culture != "en")
+            {
+                culture = "uk";
+            }
+
+            // Зберігаємо вибрану мову в cookie
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(
+                    new RequestCulture(culture)),
+                new CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1),
+                    IsEssential = true,
+                    HttpOnly = true,
+                    Secure = Request.IsHttps,
+                    SameSite = SameSiteMode.Lax
+                });
+
+            // Повертаємо користувача на попередню сторінку
+            if (!Url.IsLocalUrl(returnUrl))
+            {
+                returnUrl = "/";
+            }
+
+            return LocalRedirect(returnUrl);
         }
 
         public IActionResult Privacy()

@@ -1,0 +1,54 @@
+﻿@using System.Globalization
+
+@{
+    var currentCulture = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    var returnUrl = Context.Request.PathBase
+        + Context.Request.Path
+        + Context.Request.QueryString;
+}
+
+<div class="d-flex justify-content-center gap-2 my-3">
+
+    <form asp-controller="Home"
+          asp-action="SetLanguage"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden"
+               name="culture"
+               value="uk" />
+
+        <input type="hidden"
+               name="returnUrl"
+               value="@returnUrl" />
+
+        <button type="submit"
+                class="btn @(currentCulture == "uk" ? "btn-primary" : "btn-outline-primary")">
+            UA
+        </button>
+
+    </form>
+
+    <form asp-controller="Home"
+          asp-action="SetLanguage"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden"
+               name="culture"
+               value="en" />
+
+        <input type="hidden"
+               name="returnUrl"
+               value="@returnUrl" />
+
+        <button type="submit"
+                class="btn @(currentCulture == "en" ? "btn-primary" : "btn-outline-primary")">
+            EN
+        </button>
+
+    </form>
+
+</div>

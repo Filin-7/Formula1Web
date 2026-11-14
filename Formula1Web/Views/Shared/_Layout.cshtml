@@ -1,37 +1,57 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿
+@using System.Globalization
+
+<!DOCTYPE html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewData["Title"] - Formula 1</title>
 
+    <!-- Іконка сайту -->
     <link rel="icon"
           type="image/x-icon"
           href="~/assets/favicon.ico" />
 
+    <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
             crossorigin="anonymous"></script>
 
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
           rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
           rel="stylesheet" />
 
+    <!-- Bootstrap -->
     <link rel="stylesheet"
           href="~/lib/bootstrap/css/bootstrap.min.css" />
 
+    <!-- Стилі сайту -->
     <link rel="stylesheet"
           href="~/css/styles.css" />
+
 </head>
 
 <body id="page-top">
 
+    <!-- Перемикач мов -->
+    <div class="container">
+        <partial name="_LanguageSwitcher" />
+    </div>
+
+    <!-- Основний вміст сторінки -->
     @RenderBody()
 
+    <!-- Bootstrap JavaScript -->
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Скрипти сайту -->
     <script src="~/js/scripts.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

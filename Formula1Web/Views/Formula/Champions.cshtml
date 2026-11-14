@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Formula 1 Champions";
+
+    var drivers = new[]
+    {
+        new {
+            Name = "Michael Schumacher",
+            Titles = 7,
+            Years = "1994, 1995, 2000–2004",
+            Image = "schumacher.jpg",
+            Description = "German racing legend and seven-time Formula 1 World Champion."
+        },
+        new {
+            Name = "Lewis Hamilton",
+            Titles = 7,
+            Years = "2008, 2014, 2015, 2017–2020",
+            Image = "hamilton.jpg",
+            Description = "British driver and seven-time Formula 1 World Champion."
+        },
+        new {
+            Name = "Ayrton Senna",
+            Titles = 3,
+            Years = "1988, 1990, 1991",
+            Image = "senna.jpg",
+            Description = "Brazilian racing legend known for his speed and exceptional driving skills."
+        },
+        new {
+            Name = "Max Verstappen",
+            Titles = 4,
+            Years = "2021–2024",
+            Image = "verstappen.jpg",
+            Description = "Dutch driver who won four consecutive World Championships with Red Bull Racing."
+        },
+        new {
+            Name = "Sebastian Vettel",
+            Titles = 4,
+            Years = "2010–2013",
+            Image = "vettel.jpg",
+            Description = "German driver who won four consecutive World Championships with Red Bull Racing."
+        },
+        new {
+            Name = "Fernando Alonso",
+            Titles = 2,
+            Years = "2005, 2006",
+            Image = "alonso.jpg",
+            Description = "Spanish driver who won two World Championships with Renault."
+        }
+    };
+}
+
+<style>
+    .champion-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+        .champion-card:hover {
+            transform: translateY(-8px);
+        }
+
+    .champion-photo {
+        width: 100%;
+        height: 290px;
+        object-fit: cover;
+        object-position: center top;
+        background-color: #e9ecef;
+    }
+
+    .champion-titles {
+        color: #d39e00;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
+
+<section class="page-section bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-heading text-uppercase">
+                Formula 1 Champions
+            </h2>
+
+            <h3 class="section-subheading text-muted">
+                Legendary drivers of Formula 1
+            </h3>
+        </div>
+
+        <div class="row g-4">
+
+            @foreach (var driver in drivers)
+            {
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="card champion-card h-100 shadow-sm">
+
+                        <img src="@Url.Content("~/images/drivers/" + driver.Image)"
+                             class="champion-photo"
+                             alt="@driver.Name"
+                             loading="lazy" />
+
+                        <div class="card-body text-center p-4">
+
+                            <h4 class="card-title">
+                                @driver.Name
+                            </h4>
+
+                            <div class="champion-titles mb-2">
+                                <i class="fas fa-trophy"></i>
+                                @driver.Titles World Titles
+                            </div>
+
+                            <p class="text-muted mb-2">
+                                <strong>Championship Years:</strong>
+                                @driver.Years
+                            </p>
+
+                            <p class="card-text">
+                                @driver.Description
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-primary btn-xl">
+                Back to Home
+            </a>
+        </div>
+
+    </div>
+</section>

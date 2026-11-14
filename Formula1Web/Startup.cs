@@ -3,11 +3,13 @@ using Formula1Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
+using System.Globalization;
 
 namespace Formula1Web
 {
@@ -19,7 +21,7 @@ namespace Formula1Web
         {
             Configuration = configuration;
 
-            // Створення логера для запису у файли
+            // Логування у файли
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.File(
@@ -30,14 +32,22 @@ namespace Formula1Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Налаштування EmailSender з попередньої роботи
+            // Налаштування EmailSender
             var emailSettings = Configuration
                 .GetSection("EmailSettings")
                 .Get<EmailSettings>();
 
             services.AddSingleton(emailSettings!);
+
             services.AddTransient<IEmailSender, EmailSender>();
 
+            // Реєстрація локалізації
+            services.AddLocalization(options =>
+            {
+                options.ResourcesPath = "Resources";
+            });
+
+            // Реєстрація MVC
             services.AddControllersWithViews();
         }
 
@@ -55,9 +65,34 @@ namespace Formula1Web
                 app.UseHsts();
             }
 
+            // Підтримувані мови
+            var supportedCultures = new[]
+            {
+                new CultureInfo("uk"),
+                new CultureInfo("en")
+            };
+
+            // Налаштування локалізації
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("uk"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            };
+
+            // Визначення мови через cookie
+            localizationOptions.RequestCultureProviders =
+                new IRequestCultureProvider[]
+                {
+                    new CookieRequestCultureProvider()
+                };
+
+            // Увімкнення локалізації
+            app.UseRequestLocalization(localizationOptions);
+
             app.UseHttpsRedirection();
 
-            // Логування кожного HTTP-запиту
+            // Логування HTTP-запитів
             app.Use(async (context, next) =>
             {
                 var request = context.Request;
@@ -81,8 +116,10 @@ namespace Formula1Web
                 await next();
             });
 
+            // Статичні файли
             app.UseStaticFiles();
 
+            // Маршрутизація
             app.UseRouting();
 
             app.UseAuthorization();

@@ -12,6 +12,7 @@
 
     <title>@ViewData["Title"] - Formula 1</title>
 
+    <!-- Favicon -->
     <link rel="icon"
           type="image/x-icon"
           href="~/assets/favicon.ico" />
@@ -29,11 +30,18 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet"
-          href="~/lib/bootstrap/css/bootstrap.min.css" />
+          href="~/lib/bootstrap/css/bootstrap.min.css"
+          asp-append-version="true" />
 
-    <!-- Стилі сайту -->
+    <!-- Основні стилі сайту -->
     <link rel="stylesheet"
-          href="~/css/styles.css" />
+          href="~/css/styles.css"
+          asp-append-version="true" />
+
+    <!-- Додаткові стилі -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
 
     <style>
         /* Кнопка відкриття Sidebar */
@@ -43,7 +51,7 @@
             left: 15px;
             z-index: 1040;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         /* Висувне меню */
@@ -78,7 +86,8 @@
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#sidebarMenu"
-            aria-controls="sidebarMenu">
+            aria-controls="sidebarMenu"
+            aria-label="Open menu">
         ☰ Menu
     </button>
 
@@ -90,7 +99,8 @@
 
         <div class="offcanvas-header">
 
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">
+            <h5 class="offcanvas-title"
+                id="sidebarMenuLabel">
                 Formula 1 Menu
             </h5>
 
@@ -113,16 +123,18 @@
 
     </div>
 
-    <!-- Основний вміст сторінки на всю ширину -->
+    <!-- Основний вміст сторінки -->
     <main>
         @RenderBody()
     </main>
 
     <!-- Bootstrap JavaScript -->
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
+            asp-append-version="true"></script>
 
     <!-- Скрипти сайту -->
-    <script src="~/js/scripts.js"></script>
+    <script src="~/js/scripts.js"
+            asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 

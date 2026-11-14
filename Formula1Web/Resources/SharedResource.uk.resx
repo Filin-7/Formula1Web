@@ -150,6 +150,9 @@
   <data name="FormulaTitle" xml:space="preserve">
     <value>Формула-1</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Головна</value>
+  </data>
   <data name="MainTitle" xml:space="preserve">
     <value>Світ перегонів</value>
   </data>
